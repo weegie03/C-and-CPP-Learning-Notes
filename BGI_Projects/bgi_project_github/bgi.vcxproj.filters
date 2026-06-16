@@ -186,6 +186,9 @@
     <ClCompile Include="p4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="p5.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BGIKernel\dibapi.h">

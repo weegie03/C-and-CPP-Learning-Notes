@@ -26,7 +26,7 @@
 //					   追蹤者保持在玩家控制方塊的正下方即可
 //   
 
-#define P4
+#define P
 #ifdef P4
 
 #include ".\BGIKernel\graphics.h"

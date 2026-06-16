@@ -24,7 +24,7 @@
 //
 
 
-#define P
+#define P5
 #ifdef P5
 
 #include ".\BGIKernel\graphics.h"
@@ -42,32 +42,74 @@ int pos[10][3] = {
 	-300, -100, 11, -150, -100, 12, 0, -100, 13,  150, -100, 14, 300, -100, 15 };
 
 int id = 0;
-class CSticker {
+class CSticker
+{
 private:
 	int x, y, color;
 public:
-	CSticker() :x(pos[id][0]), y(pos[id][1]), color(pos[id][2]) { id++; };
+	CSticker() { x=pos[id][0];y= pos[id][1]; color=pos[id][2]; id++; }
 	void draw() { drawColorBox(x, y, color); }
 };
-class CPainter {
+class CPainter
+{
 private:
 	CSticker* psticker;
 public:
-	CPainter() { psticker = new CSticker[10]; }
+	CPainter() { psticker = new CSticker[10];}
 	~CPainter() { delete[] psticker; }
-	void draw() { for (int i = 0; i < 10; i++) { (psticker+i)->draw(); } }
+	void draw()
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			psticker[i].draw();
+		}
+	}
 };
-
 
 int main()
 {
 	initwindow(SCREENWIDTH, SCREENWIDTH, " P5 ");
 	srand((unsigned)time(NULL)); // 設定亂數產生器的初始值
 	cleardevice();
-	CPainter pic;					// CPainter 宣告 pic 物件
-	pic.draw();					// pic  物件呼叫 draw() 函式
+	CPainter pic;
+	pic.draw();
 	swapbuffers();
 	while (!kbhit()) { delay(200); } return 0;
 }
+
+
+
+
+
+
+//
+//int id = 0;
+//class CSticker {
+//private:
+//	int x, y, color;
+//public:
+//	CSticker() :x(pos[id][0]), y(pos[id][1]), color(pos[id][2]) { id++; };
+//	void draw() { drawColorBox(x, y, color); }
+//};
+//class CPainter {
+//private:
+//	CSticker* psticker;
+//public:
+//	CPainter() { psticker = new CSticker[10]; }
+//	~CPainter() { delete[] psticker; }
+//	void draw() { for (int i = 0; i < 10; i++) { (psticker+i)->draw(); } }
+//};
+//
+//
+//int main()
+//{
+//	initwindow(SCREENWIDTH, SCREENWIDTH, " P5 ");
+//	srand((unsigned)time(NULL)); // 設定亂數產生器的初始值
+//	cleardevice();
+//	CPainter pic;					// CPainter 宣告 pic 物件
+//	pic.draw();					// pic  物件呼叫 draw() 函式
+//	swapbuffers();
+//	while (!kbhit()) { delay(200); } return 0;
+//}
 
 #endif
