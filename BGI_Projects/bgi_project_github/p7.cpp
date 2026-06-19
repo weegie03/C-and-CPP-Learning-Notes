@@ -50,26 +50,50 @@
 #include <stdlib.h>
 #include <time.h>
 #include "functions.h"
-
-
-class box {
+//CCBox 類別函式
+//draw()畫色塊、getPos()傳回位址(傳指標)、getColor()傳回顏色、setPos()設定座標、setColor()設定顏色
+//CCBox類別
+class CCbox {
 private:
-    int x, y, color;
+    int x, y, color;//私有成員變數x、y、color
 public:
-
-    box(int a, int b ,int c) :x(a), y(b), color(c) {};
-    void draw() {drawColorBox(x,y,color);}
-    void getPos(int& a, int& b) { a = x; b = y; }
-    int getColor() { return color; }
+    CCbox(int a, int b ,int c) :x(a), y(b), color(c) {};//建構元:三個int型別的引數、x/y座標與顏色預設值0,0,COLOR_WHITE
+    void draw() {drawColorBox(x,y,color);}//draw無引數，呼叫drawColorBox畫出色塊
+    void getPos(int& a, int& b) { a = x; b = y; }//getPos:兩個int型別傳入(參照或指標)參數，傳回x,y
+    int getColor() { return color; }//getColor無引數回傳color
+    //setPos函式:兩個int型別的引數，設定座標
+    //setColor函式:一個int型別的引數，設定顏色
+};
+//  CCBoxMgr 類別函式
+//    私有成員變數： int 型別 _boxCount (CBox 的個數)、 CCBox * 型別的指標變數 _pboxes
+//    公有成員函式：
+//      建構元 : 初始化 _boxCount，並配置 5 個固定位置與顏色的 CCBox
+//                設定_boxCount內容為5
+//                以new取得_boxCount個數的CCBox物件，並設定個別CCBox的初始值
+{
+    { 0, 0, COLOR_LIGHTRED },
+    { 200,200,COLOR_LIGHTGREEN },
+    { -200,200,COLOR_LIGHTBLUE },
+    { -200,-200,COLOR_YELLOW },
+    { 200,-200,COLOR_LIGHTCYAN },
+};
+//      解構元 : 正確釋放 _pboxes 所取得的陣列空間
+//      drawAllBoxes 函式 : 無引數，畫出所有 CCBox 繪製自己
+//      getBox 函式 : 一個 int 型別的引數，傳回對應索引的 CCBox 參考
+//      getBoxCount 函式 : 無引數，傳回 _boxCount 整數值
 };
 
-class player {
-private:
-    int x, y;
-public:
-    player() :x(0), y(0){};
-    void update(char c) {
-        switch (c) {
+//以CCBoxMgr宣告一個全域物件，讓CBoxMan可以在類別成員函式內使用
+//  CBoxMan 類別：
+//    私有成員變數： int 型別 _x, _y，int 型別 _faceColor， BoxMan 臉部顏色
+//    公有成員函式：
+//      建構元 : 
+//          兩個 int 型別的引數，x/y 座標，皆有預設值 0,0，
+//          _faceColor 則直接設定成 COLOR_WHITE    
+//      update 函式 : 
+//          一個 char 型別的引數，處理鍵盤 w/s/a/d 移動指令
+//          更新 boxman 位置, 並重新設定臉部顏色
+      switch (cIn) {
         case 'w': // 往上
             y += 20;			// Y 往上 20	
             break;
@@ -83,51 +107,27 @@ public:
             x += 20;			// X 往右 20
             break;
         }
-        
-    }
-    void draw(int c) { drawBoxMan(x, y, c); }
-    float dis(int a, int b) { return (a - x) * (a - x) + (b - x) * (b - x); }
-};
-
-
-
-
+        //更新_faceColor:計算與所有color box距離
+//      draw 函式 : 繪製 BoxMan
+      void draw() { drawBoxMan(x, y, c); }//單純畫出BoxMan 顏色使用_faceColor
 
 int main(void)
 {
     initwindow(SCREENWIDTH, SCREENWIDTH, "P7");
+    char cIn
     int i = 0;
-    player p;                        // BoxMan 
-    box a(0, 0, COLOR_LIGHTRED);
-    box b(200, 200, COLOR_LIGHTGREEN);
-    box c(-200, 200, COLOR_LIGHTBLUE);
-    box d(-200, -200, COLOR_YELLOW);
-    box e(200, -200, COLOR_LIGHTCYAN);
+                          // BoxMan 初始再畫面中心
+    while (i < 100) {
+        cleardevice();
+        //由CCBoxMgr全域物件畫出所有color box
+        //畫BoxMan
+        swapbuffers();
+        cIn = getch();
+        //呼叫BoxMan的update
+        rewind(stdin);
 
-    while (i < 100)         
-    {
-        cleardevice();      
-        a.draw();                    
-        b.draw();
-        c.draw();
-        d.draw();
-        e.draw();
-        {
-            int x = 0, y = 0,cur=1000;
-            a.getPos(x, y);
-            x-p.
-
-
-
-
-
-
-        swapbuffers();      
-        p.update(getch());
-        p.draw();
-        
-        rewind(stdin);      
         i++;
+
     }
     cleardevice();
     swapbuffers();

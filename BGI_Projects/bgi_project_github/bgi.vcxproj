@@ -120,6 +120,7 @@
     <ClCompile Include="p4.cpp" />
     <ClCompile Include="p5.cpp" />
     <ClCompile Include="p6.cpp" />
+    <ClCompile Include="p7.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BGIKernel\dibapi.h" />
