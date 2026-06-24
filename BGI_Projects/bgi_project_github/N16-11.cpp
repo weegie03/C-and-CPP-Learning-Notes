@@ -52,13 +52,6 @@ int main()
 	CMouse mx( 2, 10); mx.setPos(0, 100);
 	mx.draw();
 
-
-
-
-
-
-
-
 	CCharacter* pChar = new CMouse;
 	pChar->draw();
 	delete pChar;

@@ -25,7 +25,7 @@
 
 
 #define P5
-#ifdef P5
+#ifdef P
 
 #include ".\BGIKernel\graphics.h"
 #include <iostream>
