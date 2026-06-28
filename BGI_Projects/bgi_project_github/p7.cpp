@@ -42,7 +42,7 @@
 //
 
 #define P7
-#ifdef P7
+#ifdef P
 #define _CRT_SECURE_NO_WARNINGS 1
 #include ".\BGIKernel\graphics.h"
 #include <stdio.h>

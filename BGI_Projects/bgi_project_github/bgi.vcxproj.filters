@@ -192,6 +192,9 @@
     <ClCompile Include="p7.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="i7.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BGIKernel\dibapi.h">
